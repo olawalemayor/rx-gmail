@@ -1,0 +1,35 @@
+.header,
+.profile-apps,
+.support-settings,
+.center-flex,
+.left-flex,
+.right-flex,
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  padding: 5px 15px;
+  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+}
+
+.left-flex {
+  min-width: 238px;
+  align-items: center;
+}
+
+.brand img {
+  height: 40px;
+}
+
+.center-flex {
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.profile-apps {
+  justify-content: flex-end;
+}

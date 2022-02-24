@@ -1,0 +1,44 @@
+.search-box {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.search-box > form {
+  display: flex;
+  align-items: center;
+  padding: 7px 5px;
+  height: 35px;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+.search-box > form:focus-within {
+  background-color: #fff;
+  box-shadow: var(--boxShadow);
+}
+
+.search-box > form > input {
+  border: 0;
+  padding: 0;
+  line-height: 0;
+  background: unset;
+  font-size: 16px;
+  width: 568px;
+}
+
+.search-box > form > input:focus {
+  outline: 0;
+}
+
+.search-box > form > button {
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: unset;
+  cursor: pointer;
+}
+
+.search-box > form > button:hover {
+  background-color: #ddd;
+}

@@ -1,0 +1,12 @@
+.toggler > button {
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: unset;
+  cursor: pointer;
+}
+
+.toggler > button:hover {
+  background-color: #eee;
+}
