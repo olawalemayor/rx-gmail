@@ -1,0 +1,11 @@
+.content {
+  display: flex;
+  align-items: center;
+}
+.content > .navbar {
+  width: 256px;
+}
+
+.content > .main {
+  width: 1224px;
+}

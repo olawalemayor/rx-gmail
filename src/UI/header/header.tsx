@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import "./header.css";
 import Toggler from "./toggler";
-import logo from "../../assets/svg/gmail-2476484.svg";
+import logo from "../../assets/img/image 16.png";
 import SearchBox from "./searchbox";
 import Support from "./support";
 import Settings from "./settings";
@@ -10,7 +10,7 @@ import Profile from "./profile";
 
 interface HeaderProps {}
 
-const Header: FunctionComponent<HeaderProps> = () => {
+export const Header: FunctionComponent<HeaderProps> = () => {
   return (
     <div className="header">
       {/*Toggler and brand*/}
@@ -19,7 +19,6 @@ const Header: FunctionComponent<HeaderProps> = () => {
 
         <div className="brand">
           <img src={logo} alt="Gmail" />
-          Gmail
         </div>
       </div>
 
@@ -42,5 +41,3 @@ const Header: FunctionComponent<HeaderProps> = () => {
     </div>
   );
 };
-
-export default Header;

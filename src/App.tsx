@@ -1,18 +1,21 @@
 import React from "react";
 import "./App.css";
-import Header from "./UI/header/header";
-import Routing from "./UI/routing/routing";
-import Sidebar from "./UI/sidebar/sidebar";
+import { Header, NavBar, Routing, Sidebar } from "./UI";
 
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <div className="contents">
-        <div></div>
-        <div className="routes">
+
+      <div className="content">
+        <div className="navbar">
+          <NavBar />
+        </div>
+
+        <div className="main">
           <Routing />
         </div>
+
         <div className="sidebar">
           <Sidebar />
         </div>

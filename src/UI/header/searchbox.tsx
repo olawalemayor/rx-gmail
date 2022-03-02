@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./searchbox.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
+import SearchBar from "./searchBar";
 
 interface SearchBoxProps {}
 
@@ -18,7 +19,7 @@ class SearchBox extends Component<SearchBoxProps, SearchBoxState> {
             <SearchIcon />
           </button>
 
-          <input type="text" placeholder="Search mail" />
+          <SearchBar />
 
           <button className="advanced-search">
             <ManageSearchIcon />

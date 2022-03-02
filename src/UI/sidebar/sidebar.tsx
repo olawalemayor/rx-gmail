@@ -2,12 +2,10 @@ import { FunctionComponent } from "react";
 
 interface SidebarProps {}
 
-const Sidebar: FunctionComponent<SidebarProps> = () => {
+export const Sidebar: FunctionComponent<SidebarProps> = () => {
   return (
     <div>
-      <div></div>
+      <div>sidebar works</div>
     </div>
   );
 };
-
-export default Sidebar;

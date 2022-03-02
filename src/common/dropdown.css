@@ -1,0 +1,16 @@
+.menu-items {
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  text-align: left;
+  box-shadow: var(--boxShadow);
+  min-width: max-content;
+}
+
+.menu-items > * {
+  padding: 0.4rem 2rem;
+}
+
+.menu-items > *:hover {
+  background: #eee;
+}

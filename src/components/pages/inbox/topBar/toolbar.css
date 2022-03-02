@@ -1,0 +1,25 @@
+.toolbar {
+  flex: 1 1 auto;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+.pg-it {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.toolbar-icons > * {
+  margin: 0 0.5rem;
+}
+
+.divider {
+  margin: 0.5rem;
+  width: 1px;
+  height: 20px;
+  background: #eee;
+}
+
+.more-btn {
+  position: relative;
+}

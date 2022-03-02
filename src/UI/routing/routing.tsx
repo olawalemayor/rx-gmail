@@ -4,7 +4,7 @@ import Inbox from "../../components/pages/inbox/inbox";
 
 interface RoutingProps {}
 
-const Routing: FunctionComponent<RoutingProps> = () => {
+export const Routing: FunctionComponent<RoutingProps> = () => {
   return (
     <Routes>
       <Route path="inbox" element={<Inbox />} />
@@ -12,5 +12,3 @@ const Routing: FunctionComponent<RoutingProps> = () => {
     </Routes>
   );
 };
-
-export default Routing;

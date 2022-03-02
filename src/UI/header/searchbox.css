@@ -17,7 +17,7 @@
   box-shadow: var(--boxShadow);
 }
 
-.search-box > form > input {
+.search-box > form input {
   border: 0;
   padding: 0;
   line-height: 0;
@@ -26,7 +26,7 @@
   width: 568px;
 }
 
-.search-box > form > input:focus {
+.search-box > form input:focus {
   outline: 0;
 }
 

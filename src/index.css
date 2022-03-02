@@ -16,3 +16,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.hover-btn {
+  background-color: unset;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.hover-btn:hover {
+  background-color: #eee;
+}
+
+.hover-btn:disabled:hover {
+  background-color: unset;
+}
+
+.hover-btn.circle {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.paging-icon * {
+  font-size: 12px !important;
+}
+
+.checkbox,
+.dropdown {
+  border-radius: 6px;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+}
