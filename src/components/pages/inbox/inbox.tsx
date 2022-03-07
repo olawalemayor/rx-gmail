@@ -5,12 +5,13 @@ import Toolbar from "../../topBar/toolbar";
 import PageHeader from "../../pageHeader";
 import Messages from "../../../assets/extra/messages.json";
 import MessageBox from "../../messageBox";
-import Message from "../../../models/message";
+import PreMessageBox from "../../pre-messagebox";
 
 export default function Inbox() {
   const [pageIndex, setPageIndex] = useState<number>(0);
   const [pageLimit, setPageLimit] = useState<number>(0);
   const [totalItems, setTotlaItems] = useState<number>(0);
+  const [tag, setTag] = useState<string>("");
   const [Message, setMessage] = useState([
     {
       sender: "",
@@ -32,14 +33,28 @@ export default function Inbox() {
 
   useEffect(() => {
     setMessage(Messages);
-  }, [setMessage, Messages]);
+  }, [setMessage]);
+
+  setTimeout(() => {
+    if (Message.length === Messages.length) sortTag("primary");
+  }, 1500);
+
+  function setCurrentTag(tag: string) {
+    setTag(`${tag}`);
+  }
+
+  function getSortedMessages(tag: string) {
+    let messages = [...Messages];
+    return messages.filter((message) => message.tags.includes(tag));
+  }
 
   function sortTag(tag: string) {
-    let messages = [...Messages];
-    let sortedMessages = messages.filter((message) =>
-      message.tags.includes(tag)
-    );
-    setMessage(sortedMessages);
+    setCurrentTag(tag);
+    setMessage(getSortedMessages(tag));
+  }
+
+  function showAllConvo() {
+    console.log("Should show all conversations");
   }
 
   return (
@@ -49,7 +64,15 @@ export default function Inbox() {
           onCheck={() => setChecked(!checked)}
           isChecked={checked}
         ></Toolbar>
-        <PageHeader sortTag={sortTag} />
+        {checked && (
+          <PreMessageBox
+            messages={Message}
+            totalItems={totalItems}
+            tag={tag}
+            showAllConvo={showAllConvo}
+          />
+        )}
+        <PageHeader sortTag={sortTag} getMessages={getSortedMessages} />
         <MessageBox isChecked={checked} messages={Message} />
       </PageContext.Provider>
     </Fragment>

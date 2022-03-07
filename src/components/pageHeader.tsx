@@ -6,20 +6,32 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 
 interface PageHeaderProps {
   sortTag: any;
+  getMessages: any;
 }
-export default function PageHeader({ sortTag }: PageHeaderProps) {
+export default function PageHeader({ sortTag, getMessages }: PageHeaderProps) {
   const pageHeaderStyle: CSSProperties = {
     display: "flex",
     borderBottom: "1px solid #eee",
   };
 
+  function getNotificationSize(tag: string) {
+    const notificationSize = getMessages(tag).length;
+    return notificationSize ? `${notificationSize} new` : "";
+  }
+
   return (
     <div style={pageHeaderStyle}>
-      <HeaderButton Icon={<InboxIcon />} title="Primary" handleSort={sortTag} />
+      <HeaderButton
+        Icon={<InboxIcon />}
+        title="Primary"
+        handleSort={sortTag}
+        badge={getNotificationSize("primary")}
+        badgeColor="red"
+      />
       <HeaderButton
         Icon={<GroupIcon />}
         title="Social"
-        badge="44 new"
+        badge={getNotificationSize("social")}
         badgeColor="blue"
         preview="LinkedIn, LinkedIn Learning, Fa..."
         handleSort={sortTag}
@@ -27,7 +39,7 @@ export default function PageHeader({ sortTag }: PageHeaderProps) {
       <HeaderButton
         Icon={<LocalOfferIcon />}
         title="Promotions"
-        badge="46 new"
+        badge={getNotificationSize("promotions")}
         badgeColor="green"
         preview="Netflix, Dribble, MongoDB Tea..."
         handleSort={sortTag}

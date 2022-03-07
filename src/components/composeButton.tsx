@@ -22,7 +22,7 @@ export default function ComposeButton({ expand }: ComposeButtonProps) {
 
   return (
     <button className="flex" style={composeButton}>
-      <img src={ComposeIcon} style={image} />
+      <img src={ComposeIcon} style={image} alt="" />
       {expand && <span>Compose</span>}
     </button>
   );

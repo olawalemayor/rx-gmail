@@ -8,22 +8,13 @@ interface DropDownProps {
 
 export default function Dropdown({ Component, Menu }: DropDownProps) {
   const [showMenu, setShowMenu] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   function renderBox() {
     return Menu.map((item) => <div key={item}>{item}</div>);
   }
 
-  useEffect(() => {
-    window.addEventListener("click", () => {
-      setIsOpen(!isOpen);
-    });
-  }, [isOpen]);
-
   function displayDropdown() {
     setShowMenu(!showMenu);
-    setIsOpen(true);
-    console.log(showMenu, isOpen);
   }
 
   return (
@@ -32,7 +23,7 @@ export default function Dropdown({ Component, Menu }: DropDownProps) {
         {/* <ArrowDropDownIcon /> */}
         <Component />
       </div>
-      <div className="menu-items">{showMenu && isOpen && renderBox()}</div>
+      <div className="menu-items">{showMenu && renderBox()}</div>
     </Fragment>
   );
 }
