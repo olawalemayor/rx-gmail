@@ -1,11 +1,23 @@
+/*general App styling*/
 .content {
   display: flex;
-  align-items: center;
-}
-.content > .navbar {
-  width: 256px;
+  padding-top: 1rem;
 }
 
 .content > .main {
-  width: 1224px;
+  width: 100%;
 }
+/*End of general App styling*/
+
+/**Message Table Styling*/
+.unread-style {
+  color: #000;
+}
+
+.new-badge {
+  color: #fff;
+  background-color: red;
+  font-size: 10px;
+  border-radius: 3px;
+}
+/* End of Message Table styling */

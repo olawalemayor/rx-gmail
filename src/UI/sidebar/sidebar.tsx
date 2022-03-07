@@ -1,11 +1,5 @@
-import { FunctionComponent } from "react";
+import React from "react";
 
-interface SidebarProps {}
-
-export const Sidebar: FunctionComponent<SidebarProps> = () => {
-  return (
-    <div>
-      <div>sidebar works</div>
-    </div>
-  );
-};
+export function Sidebar() {
+  return <div>Sidebar works!</div>;
+}

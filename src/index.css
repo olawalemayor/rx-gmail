@@ -1,6 +1,7 @@
 /* Global styles */
 :root {
   --boxShadow: 0px 3px 8.4px -3px rgb(173, 173, 173);
+  --smallFont: 12px;
 }
 
 body {
@@ -17,6 +18,12 @@ code {
     monospace;
 }
 
+/** Begining of genral styling */
+* {
+  color: #777;
+}
+
+/**Hover styles */
 .hover-btn {
   background-color: unset;
   border: none;
@@ -38,16 +45,32 @@ code {
   border-radius: 50%;
 }
 
+/*End of Hover Styles */
+
+/* Pagination icons*/
 .paging-icon * {
   font-size: 12px !important;
 }
 
+/*Checkbox and Dropdowns*/
 .checkbox,
 .dropdown {
   border-radius: 6px;
   padding: 0;
 }
 
+/*Setting any section to a flex style*/
 .flex {
   display: flex;
+  align-items: center;
 }
+
+.flex-end {
+  justify-items: end;
+}
+
+.flex-start {
+  justify-items: start;
+}
+
+/*End of flex styling*/

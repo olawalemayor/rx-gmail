@@ -4,11 +4,15 @@ import CheckDropdown from "./checkDropdown";
 import InputTools from "./inputTools";
 import Paginate from "./paginate";
 import TopIconButton from "./iconButton";
-import * as Icon from "../../../../common/mat-icons";
-import Dropdown from "../../../../common/dropdown";
+import * as Icon from "../../common/mat-icons";
+import Dropdown from "../../common/dropdown";
 
-export default function Toolbar() {
-  const [isChecked, setIsChecked] = useState(false);
+interface ToolbarProps {
+  onCheck: any;
+  isChecked: boolean;
+}
+
+export default function Toolbar({ onCheck, isChecked }: ToolbarProps) {
   const [more, setMore] = useState([""]);
 
   useEffect(() => {
@@ -19,7 +23,7 @@ export default function Toolbar() {
   return (
     <div className="flex toolbar">
       <div className="flex toolbar-icons">
-        <CheckDropdown onCheck={() => setIsChecked(!isChecked)} />
+        <CheckDropdown onCheck={onCheck} />
 
         {!isChecked && <TopIconButton Button={Icon.RefreshIcon} />}
         {!isChecked && (

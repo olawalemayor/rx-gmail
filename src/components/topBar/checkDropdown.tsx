@@ -1,10 +1,14 @@
 import React, { CSSProperties, useEffect, useState } from "react";
-import Checkbox from "../../../../common/checkbox";
-import Dropdown from "../../../../common/dropdown";
+import Checkbox from "../../common/checkbox";
+import Dropdown from "../../common/dropdown";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import "./checkDropdown.css";
 
-export default function CheckDropdown({ onCheck }: any) {
+interface checkDropdownProps {
+  onCheck: any;
+}
+
+export default function CheckDropdown({ onCheck }: checkDropdownProps) {
   const dropdownStyle: CSSProperties = {
     position: "relative",
   };

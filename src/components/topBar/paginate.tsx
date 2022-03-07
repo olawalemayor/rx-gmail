@@ -1,21 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import PageContext from "../../../../context/pageContext";
+import PageContext from "../../context/pageContext";
+import toDecimal from "../../common/numberPipe";
 
 export default function Paginate() {
-  function toDecimal(x: number) {
-    const numberString = x.toString();
-    let firstPart, secondPart;
-    const count = numberString.length - 3;
-
-    if (numberString.length > 3) {
-      firstPart = numberString.slice(0, count);
-      secondPart = numberString.slice(count);
-    }
-    return `${firstPart},${secondPart}`;
-  }
-
   return (
     <PageContext.Consumer>
       {({ pageIndex, pageLimit, totalItems }) => (

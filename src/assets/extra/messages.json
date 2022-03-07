@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "sender": "Indeed",
+    "subject": "Show your employers you're serious",
+    "description": "Add your resume today.",
+    "time": "9:31 PM",
+    "tags": ["primary"],
+    "status": "read"
+  },
+  {
+    "id": "2",
+    "sender": "Netflix",
+    "subject": "Your recent chat transcript",
+    "description": "Netflix, Hi John, Thanks for contacting Netflix Customer Support. Here is a transcript from...",
+    "time": "1:56 PM",
+    "tags": ["primary"],
+    "status": "unread"
+  },
+  {
+    "id": "3",
+    "sender": "Netflix",
+    "subject": "Lorem ipsum",
+    "description": "Add your resume today.",
+    "time": "1:39 PM",
+    "tags": ["promotions"],
+    "status": "unread"
+  },
+  {
+    "id": "4",
+    "sender": "Quora",
+    "subject": "Know more about Quora",
+    "description": "Check out Quora latest features.",
+    "time": "11:56 AM",
+    "tags": ["primary"],
+    "status": "read"
+  },
+  {
+    "id": "5",
+    "sender": "LinkedIn",
+    "subject": "Show your employers you're serious",
+    "description": "Add your resume today.",
+    "time": "9:21 AM",
+    "tags": ["primary"],
+    "status": "unread"
+  }
+]

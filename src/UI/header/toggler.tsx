@@ -1,22 +1,19 @@
-import { Component } from "react";
+import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./toggler.css";
 
-interface TogglerProps {}
+interface TogglerProps {
+  handleNavbarExpansion: any;
+}
 
-interface TogglerState {}
-
-class Toggler extends Component<TogglerProps, TogglerState> {
-  //state = { :  }
-  render() {
-    return (
-      <div className="toggler">
-        <button>
-          <MenuIcon />
-        </button>
-      </div>
-    );
-  }
+export function Toggler({ handleNavbarExpansion }: TogglerProps) {
+  return (
+    <div className="toggler">
+      <button onClick={handleNavbarExpansion}>
+        <MenuIcon />
+      </button>
+    </div>
+  );
 }
 
 export default Toggler;

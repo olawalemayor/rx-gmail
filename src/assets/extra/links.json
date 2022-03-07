@@ -1,0 +1,27 @@
+[
+  {
+    "path": "inbox",
+    "title": "Inbox",
+    "notifications": 4255
+  },
+  {
+    "path": "starred",
+    "title": "Starred",
+    "notifications": 0
+  },
+  {
+    "path": "snoozed",
+    "title": "Snoozed",
+    "notifications": 0
+  },
+  {
+    "path": "sent",
+    "title": "Sent",
+    "notifications": 0
+  },
+  {
+    "path": "drafts",
+    "title": "Drafts",
+    "notifications": 0
+  }
+]

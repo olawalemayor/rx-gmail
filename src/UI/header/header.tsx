@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import React from "react";
 import "./header.css";
 import Toggler from "./toggler";
 import logo from "../../assets/img/image 16.png";
@@ -8,14 +8,16 @@ import Settings from "./settings";
 import Apps from "./apps";
 import Profile from "./profile";
 
-interface HeaderProps {}
+interface HeaderProps {
+  handleNavExpansion: any;
+}
 
-export const Header: FunctionComponent<HeaderProps> = () => {
+export function Header({ handleNavExpansion }: HeaderProps) {
   return (
     <div className="header">
       {/*Toggler and brand*/}
       <div className="left-flex">
-        <Toggler />
+        <Toggler handleNavbarExpansion={handleNavExpansion} />
 
         <div className="brand">
           <img src={logo} alt="Gmail" />
@@ -40,4 +42,4 @@ export const Header: FunctionComponent<HeaderProps> = () => {
       </div>
     </div>
   );
-};
+}
