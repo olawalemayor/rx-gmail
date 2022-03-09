@@ -6,13 +6,19 @@ import Paginate from "./paginate";
 import TopIconButton from "./iconButton";
 import * as Icon from "../../common/mat-icons";
 import Dropdown from "../../common/dropdown";
+import Message from "../../models/message";
 
 interface ToolbarProps {
   onCheck: any;
   isChecked: boolean;
+  messages: Message[];
 }
 
-export default function Toolbar({ onCheck, isChecked }: ToolbarProps) {
+export default function Toolbar({
+  onCheck,
+  isChecked,
+  messages,
+}: ToolbarProps) {
   const [more, setMore] = useState([""]);
 
   useEffect(() => {
@@ -47,7 +53,7 @@ export default function Toolbar({ onCheck, isChecked }: ToolbarProps) {
         {isChecked && <TopIconButton Button={Icon.LabelIcon} />}
       </div>
       <div className="flex pg-it">
-        <Paginate />
+        {messages.length > 0 && <Paginate />}
         <InputTools />
       </div>
     </div>

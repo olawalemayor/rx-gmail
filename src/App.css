@@ -21,3 +21,8 @@
   border-radius: 3px;
 }
 /* End of Message Table styling */
+
+/*Message row styling*/
+.hovered-row {
+  box-shadow: var(--boxShadow);
+}

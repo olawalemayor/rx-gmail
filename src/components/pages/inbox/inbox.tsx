@@ -6,8 +6,11 @@ import PageHeader from "../../pageHeader";
 import Messages from "../../../assets/extra/messages.json";
 import MessageBox from "../../messageBox";
 import PreMessageBox from "../../pre-messagebox";
+import InboxContext from "../../../context/inboxContext";
+import toNumberString from "../../../common/numberPipe";
 
 export default function Inbox() {
+  const [username, setUsername] = useState("");
   const [pageIndex, setPageIndex] = useState<number>(0);
   const [pageLimit, setPageLimit] = useState<number>(0);
   const [totalItems, setTotlaItems] = useState<number>(0);
@@ -26,10 +29,17 @@ export default function Inbox() {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
+    setUsername("olawalemayor");
+    document.title = `Inbox (${toNumberString(Message.length)}) - ${username}`;
+  }, [toNumberString, Message, setUsername]);
+
+  useEffect(() => {
     setPageIndex(1);
-    setPageLimit(50);
-    setTotlaItems(5175);
-  }, [setPageIndex, setPageLimit, setTotlaItems]);
+
+    Message.length > 50 ? setPageIndex(50) : setPageLimit(Message.length);
+
+    setTotlaItems(Message.length);
+  }, [setPageIndex, setPageLimit, setTotlaItems, Message]);
 
   useEffect(() => {
     setMessage(Messages);
@@ -48,6 +58,13 @@ export default function Inbox() {
     return messages.filter((message) => message.tags.includes(tag));
   }
 
+  function getUnreadMessages(tag: string) {
+    let messages = [...Messages];
+    return messages.filter(
+      (message) => message.tags.includes(tag) && message.status === "unread"
+    );
+  }
+
   function sortTag(tag: string) {
     setCurrentTag(tag);
     setMessage(getSortedMessages(tag));
@@ -63,6 +80,7 @@ export default function Inbox() {
         <Toolbar
           onCheck={() => setChecked(!checked)}
           isChecked={checked}
+          messages={Message}
         ></Toolbar>
         {checked && (
           <PreMessageBox
@@ -72,7 +90,11 @@ export default function Inbox() {
             showAllConvo={showAllConvo}
           />
         )}
-        <PageHeader sortTag={sortTag} getMessages={getSortedMessages} />
+        <PageHeader
+          sortTag={sortTag}
+          getMessages={getSortedMessages}
+          getUnreadMessages={getUnreadMessages}
+        />
         <MessageBox isChecked={checked} messages={Message} />
       </PageContext.Provider>
     </Fragment>

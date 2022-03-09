@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import Checkbox from "../common/checkbox";
 import Starred from "../common/starred";
 
@@ -19,11 +19,46 @@ export default function MessageRow({
   status,
   isChecked,
 }: MessageRowProps) {
-  const messageRow: CSSProperties = { borderBottom: "1px solid #eee" };
+  const [activeRow, setActiveRow] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    setActiveRow(isChecked);
+  }, [isChecked]);
+
+  function styleMessageRow(): CSSProperties {
+    const defaultStyle: CSSProperties = {
+      borderBottom: "1px solid #eee",
+      cursor: "pointer",
+    };
+    let dynamic: CSSProperties = activeRow
+      ? { backgroundColor: "#c2dbff" }
+      : {};
+    return { ...defaultStyle, ...dynamic };
+  }
+
+  function getMessageRowClass(): string {
+    const defaultClass = "flex";
+    let dynamic = isHovered ? "hovered-row" : "";
+
+    return `${defaultClass} ${dynamic}`;
+  }
+
+  function setHoverStyle() {
+    setIsHovered(true);
+  }
+
+  function removeHoverStyle() {
+    setIsHovered(false);
+  }
 
   function unreadStyle(): string {
     let dynamicStyling: string = status === "unread" ? "unread-style" : "";
     return dynamicStyling;
+  }
+
+  function handleCheck() {
+    setActiveRow(!activeRow);
   }
 
   const introduction: CSSProperties = {
@@ -44,9 +79,14 @@ export default function MessageRow({
   };
 
   return (
-    <div className="flex" style={messageRow}>
+    <div
+      className={getMessageRowClass()}
+      style={styleMessageRow()}
+      onMouseEnter={() => setHoverStyle()}
+      onMouseLeave={() => removeHoverStyle()}
+    >
       <div className="flex" style={introduction}>
-        <div className="">
+        <div className="" onClick={() => handleCheck()}>
           <Checkbox isChecked={isChecked} />
         </div>
         <div className="">
@@ -66,7 +106,7 @@ export default function MessageRow({
             </span>
           </p>
         </div>
-        <div>{time}</div>
+        {!isHovered && <div>{time}</div>}
       </div>
     </div>
   );

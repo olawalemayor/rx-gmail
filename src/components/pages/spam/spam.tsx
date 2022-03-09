@@ -37,6 +37,7 @@ export default function Spam() {
         <Toolbar
           onCheck={() => setChecked(!checked)}
           isChecked={checked}
+          messages={Message}
         ></Toolbar>
       </PageContext.Provider>
     </Fragment>

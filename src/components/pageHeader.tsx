@@ -7,15 +7,20 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 interface PageHeaderProps {
   sortTag: any;
   getMessages: any;
+  getUnreadMessages: any;
 }
-export default function PageHeader({ sortTag, getMessages }: PageHeaderProps) {
+export default function PageHeader({
+  sortTag,
+  getMessages,
+  getUnreadMessages,
+}: PageHeaderProps) {
   const pageHeaderStyle: CSSProperties = {
     display: "flex",
     borderBottom: "1px solid #eee",
   };
 
   function getNotificationSize(tag: string) {
-    const notificationSize = getMessages(tag).length;
+    const notificationSize = getUnreadMessages(tag).length;
     return notificationSize ? `${notificationSize} new` : "";
   }
 
