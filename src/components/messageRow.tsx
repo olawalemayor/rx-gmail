@@ -30,6 +30,7 @@ export default function MessageRow({
     const defaultStyle: CSSProperties = {
       borderBottom: "1px solid #eee",
       cursor: "pointer",
+      padding: "0 1rem",
     };
     let dynamic: CSSProperties = activeRow
       ? { backgroundColor: "#c2dbff" }

@@ -26,3 +26,23 @@
 .hovered-row {
   box-shadow: var(--boxShadow);
 }
+
+/*Sidebar Icons*/
+.sidebar {
+  margin: 0 0.5rem;
+}
+
+.sidebar-icons {
+  padding: 13px;
+  border-radius: 50%;
+}
+
+.google-icons {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.google-icons img {
+  width: 100%;
+  max-width: 30px;
+}
