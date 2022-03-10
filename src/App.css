@@ -4,10 +4,26 @@
   padding-top: 1rem;
 }
 
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
 .content > .main {
   width: 100%;
 }
 /*End of general App styling*/
+
+/*Header styles*/
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 0 0.3rem;
+}
 
 /**Message Table Styling*/
 .unread-style {
@@ -32,8 +48,17 @@
   margin: 0 0.5rem;
 }
 
+.sidebar.box {
+  border-left: 1px solid #eee;
+}
+
 .sidebar-icons {
-  padding: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  margin: 1rem 0;
   border-radius: 50%;
 }
 
@@ -44,5 +69,5 @@
 
 .google-icons img {
   width: 100%;
-  max-width: 30px;
+  max-width: 25px;
 }

@@ -5,7 +5,7 @@ interface SupportProps {}
 
 const Support: FunctionComponent<SupportProps> = () => {
   return (
-    <div className="support">
+    <div className="support header-icon hover-btn">
       <HelpOutlineIcon />
     </div>
   );

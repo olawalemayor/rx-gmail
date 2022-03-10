@@ -20,7 +20,7 @@ function App() {
           <Routing />
         </div>
 
-        <div className="sidebar">
+        <div className="sidebar box">
           <Sidebar />
         </div>
       </div>

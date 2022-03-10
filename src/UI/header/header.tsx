@@ -6,13 +6,17 @@ import SearchBox from "./searchbox";
 import Support from "./support";
 import Settings from "./settings";
 import Apps from "./apps";
-import Profile from "./profile";
+import Iconbox from "../sidebar/iconbox";
+import profileImg from "../../assets/images/gmail transparent logo.png";
 
 interface HeaderProps {
   handleNavExpansion: any;
 }
 
 export function Header({ handleNavExpansion }: HeaderProps) {
+  function getIconClass() {
+    return "header-icon hover-btn";
+  }
   return (
     <div className="header">
       {/*Toggler and brand*/}
@@ -38,7 +42,12 @@ export function Header({ handleNavExpansion }: HeaderProps) {
       {/* apps and profile */}
       <div className="profile-apps">
         <Apps />
-        <Profile />
+
+        <Iconbox
+          description="profile"
+          getIconClass={getIconClass}
+          icon={profileImg}
+        />
       </div>
     </div>
   );

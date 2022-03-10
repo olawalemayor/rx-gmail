@@ -31,7 +31,7 @@ export default function Inbox() {
   useEffect(() => {
     setUsername("olawalemayor");
     document.title = `Inbox (${toNumberString(Message.length)}) - ${username}`;
-  }, [toNumberString, Message, setUsername]);
+  }, [toNumberString, Message, setUsername, username]);
 
   useEffect(() => {
     setPageIndex(1);

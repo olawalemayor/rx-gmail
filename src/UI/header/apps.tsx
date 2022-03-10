@@ -5,7 +5,7 @@ interface AppsProps {}
 
 const Apps: FunctionComponent<AppsProps> = () => {
   return (
-    <div className="google-apps">
+    <div className="google-apps header-icon hover-btn">
       <AppsIcon />
     </div>
   );

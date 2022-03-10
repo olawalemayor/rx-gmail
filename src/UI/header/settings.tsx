@@ -5,7 +5,7 @@ interface SettingsProps {}
 
 const Settings: FunctionComponent<SettingsProps> = () => {
   return (
-    <div className="settings">
+    <div className="settings header-icon hover-btn">
       <SettingsIcon />
     </div>
   );
