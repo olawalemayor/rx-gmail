@@ -12,6 +12,15 @@ img {
 .content > .main {
   width: 100%;
 }
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
 /*End of general App styling*/
 
 /*Header styles*/

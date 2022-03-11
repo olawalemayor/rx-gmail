@@ -32,7 +32,7 @@ code {
 }
 
 .hover-btn:hover {
-  background-color: #eee;
+  background-color: rgba(238, 238, 238, 0.6);
 }
 
 .hover-btn:disabled:hover {

@@ -31,6 +31,7 @@ export default function MessageRow({
       borderBottom: "1px solid #eee",
       cursor: "pointer",
       padding: "0 1rem",
+      maxWidth: "1200px",
     };
     let dynamic: CSSProperties = activeRow
       ? { backgroundColor: "#c2dbff" }
@@ -64,19 +65,36 @@ export default function MessageRow({
 
   const introduction: CSSProperties = {
     width: "250px",
+    minWidth: "250px",
     placeItems: "center flex-start",
   };
 
   const details: CSSProperties = {
-    flex: "1 0 auto",
+    flex: "0 0 auto",
     justifyContent: "space-between",
+    width: "100%",
+    maxWidth: "940px",
   };
 
   const topic: CSSProperties = {
     fontWeight: "bolder",
+    display: "flex",
+    alignItems: "center",
+    flex: "1 0 auto",
+    width: "700px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    height: "1.5rem",
   };
+
   const summary: CSSProperties = {
     fontWeight: "lighter",
+  };
+
+  const styleTime: CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "end",
   };
 
   return (
@@ -87,27 +105,30 @@ export default function MessageRow({
       onMouseLeave={() => removeHoverStyle()}
     >
       <div className="flex" style={introduction}>
-        <div className="" onClick={() => handleCheck()}>
+        <div className="icons hover-btn" onClick={() => handleCheck()}>
           <Checkbox isChecked={isChecked} />
         </div>
-        <div className="">
+
+        <div className="icons hover-btn">
           <Starred />
         </div>
+
         <div className={unreadStyle()}>
           {sender}{" "}
           {status === "unread" && <span className="new-badge">New!!!</span>}
         </div>
       </div>
+
       <div className="flex" style={details}>
-        <div>
-          <p style={topic} className={unreadStyle()}>
-            {subject} -{" "}
-            <span style={summary} className={unreadStyle()}>
-              {description}
-            </span>
-          </p>
+        <div style={topic} className={unreadStyle()}>
+          <div>{subject} - </div>
+
+          <div style={summary} className={unreadStyle()}>
+            {description}
+          </div>
         </div>
-        {!isHovered && <div>{time}</div>}
+
+        {!isHovered && <div style={styleTime}>{time}</div>}
       </div>
     </div>
   );

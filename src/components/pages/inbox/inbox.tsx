@@ -6,7 +6,6 @@ import PageHeader from "../../pageHeader";
 import Messages from "../../../assets/extra/messages.json";
 import MessageBox from "../../messageBox";
 import PreMessageBox from "../../pre-messagebox";
-import InboxContext from "../../../context/inboxContext";
 import toNumberString from "../../../common/numberPipe";
 
 export default function Inbox() {
