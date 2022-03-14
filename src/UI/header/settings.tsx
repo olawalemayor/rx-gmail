@@ -1,14 +1,22 @@
-import { FunctionComponent } from "react";
+import { Fragment, FunctionComponent } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
+import withTooltip from "../../common/withTooltip";
 
-interface SettingsProps {}
+interface SettingsProps {
+  showTooltip: boolean;
+}
 
-const Settings: FunctionComponent<SettingsProps> = () => {
+const Settings: FunctionComponent<SettingsProps> = ({
+  showTooltip,
+}: SettingsProps) => {
   return (
-    <div className="settings header-icon hover-btn">
-      <SettingsIcon />
-    </div>
+    <Fragment>
+      <div className="settings header-icon hover-btn">
+        <SettingsIcon />
+      </div>
+      {showTooltip && <div className="tooltip">Settings</div>}
+    </Fragment>
   );
 };
 
-export default Settings;
+export default withTooltip(Settings);

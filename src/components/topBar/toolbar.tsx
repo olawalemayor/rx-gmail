@@ -31,26 +31,40 @@ export default function Toolbar({
       <div className="flex toolbar-icons">
         <CheckDropdown onCheck={onCheck} />
 
-        {!isChecked && <TopIconButton Button={Icon.RefreshIcon} />}
+        {!isChecked && (
+          <TopIconButton Button={Icon.RefreshIcon} tip="Refresh" />
+        )}
         {!isChecked && (
           <div className="more-btn">
             <Dropdown
-              Component={() => <TopIconButton Button={Icon.MoreVertIcon} />}
+              Component={() => (
+                <TopIconButton Button={Icon.MoreVertIcon} tip="More" />
+              )}
               Menu={more}
             />
           </div>
         )}
 
-        {isChecked && <TopIconButton Button={Icon.ArchiveIcon} />}
-        {isChecked && <TopIconButton Button={Icon.ReportIcon} />}
-        {isChecked && <TopIconButton Button={Icon.DeleteIcon} />}
+        {isChecked && <TopIconButton Button={Icon.ArchiveIcon} tip="Archive" />}
+        {isChecked && (
+          <TopIconButton Button={Icon.ReportIcon} tip="Report Spam" />
+        )}
+        {isChecked && <TopIconButton Button={Icon.DeleteIcon} tip="Delete" />}
         {isChecked && <span className="divider"></span>}
-        {isChecked && <TopIconButton Button={Icon.DraftsIcon} />}
-        {isChecked && <TopIconButton Button={Icon.AccessTimeFilledIcon} />}
-        {isChecked && <TopIconButton Button={Icon.AddTaskIcon} />}
+        {isChecked && (
+          <TopIconButton Button={Icon.DraftsIcon} tip="Mark as read" />
+        )}
+        {isChecked && (
+          <TopIconButton Button={Icon.AccessTimeFilledIcon} tip="Snooze" />
+        )}
+        {isChecked && (
+          <TopIconButton Button={Icon.AddTaskIcon} tip="Add to tasks" />
+        )}
         {isChecked && <span className="divider"></span>}
-        {isChecked && <TopIconButton Button={Icon.DriveFileMoveIcon} />}
-        {isChecked && <TopIconButton Button={Icon.LabelIcon} />}
+        {isChecked && (
+          <TopIconButton Button={Icon.DriveFileMoveIcon} tip="Move to" />
+        )}
+        {isChecked && <TopIconButton Button={Icon.LabelIcon} tip="Labels" />}
       </div>
       <div className="flex pg-it">
         {messages.length > 0 && <Paginate />}

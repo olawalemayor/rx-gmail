@@ -1,8 +1,8 @@
 import { Component } from "react";
 import "./searchbox.css";
-import SearchIcon from "@mui/icons-material/Search";
-import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import SearchBar from "./searchBar";
+import SearchButton from "./search/searchButton";
+import SearchOptions from "./search/searchOptions";
 
 interface SearchBoxProps {}
 
@@ -15,15 +15,11 @@ class SearchBox extends Component<SearchBoxProps, SearchBoxState> {
     return (
       <div className="search-box">
         <form>
-          <button className="basic-search">
-            <SearchIcon />
-          </button>
+          <SearchButton />
 
           <SearchBar />
 
-          <button className="advanced-search">
-            <ManageSearchIcon />
-          </button>
+          <SearchOptions />
         </form>
       </div>
     );

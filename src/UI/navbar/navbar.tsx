@@ -34,6 +34,7 @@ export function NavBar({ navbarExpansion }: NavBarProps) {
   function navBar(): CSSProperties {
     const marginStyle: CSSProperties = {
       marginTop: "1rem",
+      position: "relative",
     };
     let result: CSSProperties;
     if (navbarExpansion) result = { width: "256px" };

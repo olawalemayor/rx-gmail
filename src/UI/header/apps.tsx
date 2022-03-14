@@ -1,14 +1,20 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, Fragment } from "react";
 import AppsIcon from "@mui/icons-material/Apps";
+import withTooltip from "../../common/withTooltip";
 
-interface AppsProps {}
+interface AppsProps {
+  showTooltip: boolean;
+}
 
-const Apps: FunctionComponent<AppsProps> = () => {
+const Apps: FunctionComponent<AppsProps> = ({ showTooltip }: AppsProps) => {
   return (
-    <div className="google-apps header-icon hover-btn">
-      <AppsIcon />
-    </div>
+    <Fragment>
+      <div className="google-apps header-icon hover-btn">
+        <AppsIcon />
+      </div>
+      {showTooltip && <div className="tooltip">Google apps</div>}
+    </Fragment>
   );
 };
 
-export default Apps;
+export default withTooltip(Apps);

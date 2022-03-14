@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import withTooltip from "./withTooltip";
 
 interface checkboxProps {
   isChecked?: boolean;
+  showTooltip: boolean;
+  tip?: string;
 }
 
-export default function Checkbox({ isChecked }: checkboxProps) {
+function Checkbox({ isChecked, tip, showTooltip }: checkboxProps) {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -16,12 +19,17 @@ export default function Checkbox({ isChecked }: checkboxProps) {
   }, [isChecked, setChecked]);
 
   return (
-    <div
-      onClick={() => {
-        setChecked(!checked);
-      }}
-    >
-      {checked ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
-    </div>
+    <Fragment>
+      <div
+        onClick={() => {
+          setChecked(!checked);
+        }}
+      >
+        {checked ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
+      </div>
+      {showTooltip && tip && <div className="tooltip">{tip}</div>}
+    </Fragment>
   );
 }
+
+export default withTooltip(Checkbox);

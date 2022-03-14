@@ -106,7 +106,7 @@ export default function MessageRow({
     >
       <div className="flex" style={introduction}>
         <div className="icons hover-btn" onClick={() => handleCheck()}>
-          <Checkbox isChecked={isChecked} />
+          <Checkbox isChecked={isChecked} tip="Select" />
         </div>
 
         <div className="icons hover-btn">

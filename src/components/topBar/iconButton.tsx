@@ -1,9 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
+import withTooltip from "../../common/withTooltip";
 
-export default function TopIconButton({ Button }: any) {
+function TopIconButton({ Button, showTooltip, tip }: any) {
   return (
-    <button className="hover-btn circle">
-      <Button />
-    </button>
+    <Fragment>
+      <button className="hover-btn circle">
+        <Button />
+      </button>
+      {showTooltip && tip && <div className="tooltip">{tip}</div>}
+    </Fragment>
   );
 }
+
+export default withTooltip(TopIconButton);

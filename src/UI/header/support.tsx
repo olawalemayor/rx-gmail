@@ -1,14 +1,22 @@
-import { FunctionComponent } from "react";
+import { Fragment, FunctionComponent } from "react";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import withTooltip from "../../common/withTooltip";
 
-interface SupportProps {}
+interface SupportProps {
+  showTooltip: boolean;
+}
 
-const Support: FunctionComponent<SupportProps> = () => {
+const Support: FunctionComponent<SupportProps> = ({
+  showTooltip,
+}: SupportProps) => {
   return (
-    <div className="support header-icon hover-btn">
-      <HelpOutlineIcon />
-    </div>
+    <Fragment>
+      <div className="support header-icon hover-btn">
+        <HelpOutlineIcon />
+      </div>
+      {showTooltip && <div className="tooltip">Support</div>}
+    </Fragment>
   );
 };
 
-export default Support;
+export default withTooltip(Support);

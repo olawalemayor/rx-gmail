@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
+import withTooltip from "./withTooltip";
 
-export default function Starred() {
+function Starred({ showTooltip }: any) {
   const [isStarred, setIsStarred] = useState(false);
 
   return (
-    <div onClick={() => setIsStarred(!isStarred)}>
-      {isStarred ? (
-        <div>
-          <StarIcon />
-        </div>
-      ) : (
-        <div>
-          <StarBorderIcon />
-        </div>
-      )}
-    </div>
+    <Fragment>
+      <div onClick={() => setIsStarred(!isStarred)}>
+        {isStarred ? (
+          <div>
+            <StarIcon />
+          </div>
+        ) : (
+          <div>
+            <StarBorderIcon />
+          </div>
+        )}
+      </div>
+      {showTooltip && isStarred && <div className="tooltip">Starred</div>}
+      {showTooltip && !isStarred && <div className="tooltip">Not starred</div>}
+    </Fragment>
   );
 }
+
+export default withTooltip(Starred);

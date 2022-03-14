@@ -1,6 +1,7 @@
-import React, { CSSProperties, useEffect, useState } from "react";
+import React, { CSSProperties, Fragment, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import toNumberString from "../numberPipe";
+import withTooltip from "../withTooltip";
 
 interface NavItemProps {
   icon: any;
@@ -8,13 +9,15 @@ interface NavItemProps {
   navbarExpansion: boolean;
   notiications: number;
   path: string;
+  showTooltip: boolean;
 }
-export default function NavItem({
+function NavItem({
   icon,
   title,
   notiications,
   navbarExpansion,
   path,
+  showTooltip,
 }: NavItemProps) {
   const [isActive, setisActive] = useState(false);
   const [activeColor, setActiveColor] = useState("");
@@ -80,14 +83,19 @@ export default function NavItem({
   }
 
   return (
-    <NavLink to={path} style={getContainerStyle}>
-      <div className="flex hover-btn" style={navBoxStyle}>
-        <div style={getIconStyle()}>{icon}</div>
-        <div className="flex" style={main}>
-          {navbarExpansion && <div>{title}</div>}
-          {notiications > 0 && <div>{toNumberString(notiications)}</div>}
+    <Fragment>
+      <NavLink to={path} style={getContainerStyle}>
+        <div className="flex hover-btn" style={navBoxStyle}>
+          <div style={getIconStyle()}>{icon}</div>
+          <div className="flex" style={main}>
+            {navbarExpansion && <div>{title}</div>}
+            {notiications > 0 && <div>{toNumberString(notiications)}</div>}
+          </div>
         </div>
-      </div>
-    </NavLink>
+        {showTooltip && <div className="tooltip absolute-right">{title}</div>}
+      </NavLink>
+    </Fragment>
   );
 }
+
+export default withTooltip(NavItem);
