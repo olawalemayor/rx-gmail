@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Message from "../models/message";
+import Message from "../../models/message";
 import MessageRow from "./messageRow";
 
 interface MessageBoxProps {
@@ -12,6 +12,7 @@ export default function MessageBox({ isChecked, messages }: MessageBoxProps) {
       {messages.map(({ id, sender, subject, description, time, status }) => (
         <MessageRow
           key={id}
+          id={id}
           sender={sender}
           subject={subject}
           description={description}

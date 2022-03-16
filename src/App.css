@@ -35,6 +35,36 @@ img {
   position: relative;
 }
 
+.header-btn.red {
+  color: red;
+  border-bottom: 4px solid red;
+}
+
+.header-btn.green {
+  color: green;
+  border-bottom: 4px solid green;
+}
+
+.header-btn.blue {
+  color: blue;
+  border-bottom: 4px solid blue;
+}
+
+.header-btn.blue > * > * > * {
+  color: blue;
+}
+
+.header-btn.red > * > * > * {
+  color: red;
+}
+
+.header-btn.green > * > * > * {
+  color: green;
+}
+
+.header-badge {
+  color: #fff !important;
+}
 /**Message Table Styling*/
 .unread-style {
   color: #000;
@@ -97,4 +127,36 @@ img {
 
 .tooltip * {
   color: #fff;
+}
+
+/* Navigation Links */
+
+.navlinks {
+  text-decoration: none;
+}
+
+.navlinks .red * {
+  color: red;
+}
+.link-active {
+  background-color: rgba(153, 153, 153, 0.3);
+}
+
+.link-active.red {
+  background-color: #ebb1b196;
+}
+
+/* Individual mail styles */
+.msg-inner-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.msg-inner-header h2,
+.msg-inner-header p {
+  color: #000;
+}
+
+.msg-actions {
+  display: flex;
 }

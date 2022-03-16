@@ -1,4 +1,4 @@
-import React, { CSSProperties, Fragment, useEffect, useState } from "react";
+import React, { CSSProperties, Fragment } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import toNumberString from "../numberPipe";
 import withTooltip from "../withTooltip";
@@ -19,26 +19,7 @@ function NavItem({
   path,
   showTooltip,
 }: NavItemProps) {
-  const [isActive, setisActive] = useState(false);
-  const [activeColor, setActiveColor] = useState("");
-
   const pathName = useLocation().pathname;
-
-  function setPathStatus() {
-    console.log(`/${path}`, "is equal to", pathName);
-    if (`/${path}` === pathName) setisActive(true);
-  }
-
-  function setActivePathColor() {
-    switch (path) {
-      case "inbox":
-        setActiveColor("red");
-        break;
-
-      default:
-        break;
-    }
-  }
 
   const navBoxStyle: CSSProperties = {
     flex: "1 0 auto",
@@ -65,27 +46,22 @@ function NavItem({
     width: "100%",
   };
 
-  function getContainerStyle(): CSSProperties {
-    let result: CSSProperties = {};
-    const navStyle: CSSProperties = {
-      textDecoration: "none",
-    };
-
-    if (isActive)
-      result = {
-        color: activeColor,
-      };
-    else {
-      result = { color: "#777" };
-    }
-
-    return { ...result, ...navStyle };
+  function getClassName() {
+    const activeClass = "flex hover-btn link-active";
+    if (pathName === `/${path}`)
+      switch (path) {
+        case "inbox":
+          return activeClass + " red";
+        default:
+          return activeClass;
+      }
+    else return "flex hover-btn";
   }
 
   return (
     <Fragment>
-      <NavLink to={path} style={getContainerStyle}>
-        <div className="flex hover-btn" style={navBoxStyle}>
+      <NavLink to={path} className="navlinks">
+        <div className={getClassName()} style={navBoxStyle}>
           <div style={getIconStyle()}>{icon}</div>
           <div className="flex" style={main}>
             {navbarExpansion && <div>{title}</div>}

@@ -1,4 +1,6 @@
 import React, { CSSProperties } from "react";
+import MsgBoxContext from "../context/msgBoxContext";
+import Message from "../models/message";
 
 interface HeaderButtonProps {
   Icon: any;
@@ -19,7 +21,7 @@ export default function HeaderButton({
 }: HeaderButtonProps) {
   function getBadgeStyle(color: any): CSSProperties {
     return {
-      color: `#fff`,
+      color: `#fff !important`,
       backgroundColor: `${color}`,
       padding: "0 .2rem",
       marginLeft: "5px",
@@ -43,22 +45,46 @@ export default function HeaderButton({
     fontSize: "12px",
   };
 
+  const activeClass = (messages: Message[], tag: string) => {
+    const isIncluded = messages.some((m) => m.tags.includes(tag));
+    const styleClass = "header-btn hover-btn";
+
+    switch (tag) {
+      case "primary":
+        return isIncluded ? styleClass + " red" : styleClass;
+      case "social":
+        return isIncluded ? styleClass + " blue" : styleClass;
+      case "promotions":
+        return isIncluded ? styleClass + " green" : styleClass;
+      default:
+        return styleClass;
+    }
+  };
+
   return (
-    <div
-      style={headerButtonStyle}
-      className="hover-btn"
-      onClick={() => handleSort(title.toLowerCase())}
-    >
-      <div style={headerButtonIcon}>{Icon}</div>
-      <div>
-        <div className="hb-top-row flex">
-          <div>{title}</div>
-          {badge && <div style={getBadgeStyle(badgeColor)}>{badge}</div>}
+    <MsgBoxContext.Consumer>
+      {(msgBoxContext) => (
+        <div
+          style={headerButtonStyle}
+          className={activeClass(msgBoxContext, title.toLowerCase())}
+          onClick={() => handleSort(title.toLowerCase())}
+        >
+          <div style={headerButtonIcon}>{Icon}</div>
+          <div>
+            <div className="hb-top-row flex">
+              <div>{title}</div>
+              {badge && (
+                <div style={getBadgeStyle(badgeColor)} className="header-badge">
+                  {badge}
+                </div>
+              )}
+            </div>
+            <div className="hb-bottom-row" style={previewStyle}>
+              {preview}
+            </div>
+          </div>
         </div>
-        <div className="hb-bottom-row" style={previewStyle}>
-          {preview}
-        </div>
-      </div>
-    </div>
+      )}
+    </MsgBoxContext.Consumer>
   );
 }

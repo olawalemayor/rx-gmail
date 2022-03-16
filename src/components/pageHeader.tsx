@@ -6,12 +6,10 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 
 interface PageHeaderProps {
   sortTag: any;
-  getMessages: any;
   getUnreadMessages: any;
 }
 export default function PageHeader({
   sortTag,
-  getMessages,
   getUnreadMessages,
 }: PageHeaderProps) {
   const pageHeaderStyle: CSSProperties = {

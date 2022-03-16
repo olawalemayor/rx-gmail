@@ -3,10 +3,11 @@ import PageContext from "../../../context/pageContext";
 import "./inbox.css";
 import Toolbar from "../../topBar/toolbar";
 import PageHeader from "../../pageHeader";
-import Messages from "../../../assets/extra/messages.json";
-import MessageBox from "../../messageBox";
+import MessageBox from "../../message/messageBox";
 import PreMessageBox from "../../pre-messagebox";
 import toNumberString from "../../../common/numberPipe";
+import { getMessages } from "../../../assets/extra/messageService";
+import MsgBoxContext from "../../../context/msgBoxContext";
 
 export default function Inbox() {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ export default function Inbox() {
   const [pageLimit, setPageLimit] = useState<number>(0);
   const [totalItems, setTotlaItems] = useState<number>(0);
   const [tag, setTag] = useState<string>("");
-  const [Message, setMessage] = useState([
+  const [messages, setMessages] = useState([
     {
       sender: "",
       subject: "",
@@ -23,42 +24,43 @@ export default function Inbox() {
       id: "",
       status: "",
       tags: [""],
+      message: {
+        sender_email: "",
+        body: "",
+      },
     },
   ]);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     setUsername("olawalemayor");
-    document.title = `Inbox (${toNumberString(Message.length)}) - ${username}`;
-  }, [toNumberString, Message, setUsername, username]);
+    document.title = `Inbox (${toNumberString(messages.length)}) - ${username}`;
+  }, [messages, setUsername, username]);
 
   useEffect(() => {
     setPageIndex(1);
 
-    Message.length > 50 ? setPageIndex(50) : setPageLimit(Message.length);
+    messages.length > 50 ? setPageIndex(50) : setPageLimit(messages.length);
 
-    setTotlaItems(Message.length);
-  }, [setPageIndex, setPageLimit, setTotlaItems, Message]);
+    setTotlaItems(messages.length);
+  }, [setPageIndex, setPageLimit, setTotlaItems, messages]);
 
   useEffect(() => {
-    setMessage(Messages);
-  }, [setMessage]);
-
-  setTimeout(() => {
-    if (Message.length === Messages.length) sortTag("primary");
-  }, 1500);
+    const Messages = [...getMessages()];
+    setMessages(Messages);
+  }, [setMessages]);
 
   function setCurrentTag(tag: string) {
     setTag(`${tag}`);
   }
 
   function getSortedMessages(tag: string) {
-    let messages = [...Messages];
+    let messages = [...getMessages()];
     return messages.filter((message) => message.tags.includes(tag));
   }
 
   function getUnreadMessages(tag: string) {
-    let messages = [...Messages];
+    let messages = [...getMessages()];
     return messages.filter(
       (message) => message.tags.includes(tag) && message.status === "unread"
     );
@@ -66,35 +68,36 @@ export default function Inbox() {
 
   function sortTag(tag: string) {
     setCurrentTag(tag);
-    setMessage(getSortedMessages(tag));
+    setMessages(getSortedMessages(tag));
   }
 
   function showAllConvo() {
     console.log("Should show all conversations");
   }
 
+  //sort to primary at startup
+  if (messages.length === getMessages().length) sortTag("primary");
+
   return (
     <Fragment>
       <PageContext.Provider value={{ pageIndex, pageLimit, totalItems }}>
-        <Toolbar
-          onCheck={() => setChecked(!checked)}
-          isChecked={checked}
-          messages={Message}
-        ></Toolbar>
-        {checked && (
-          <PreMessageBox
-            messages={Message}
-            totalItems={totalItems}
-            tag={tag}
-            showAllConvo={showAllConvo}
-          />
-        )}
-        <PageHeader
-          sortTag={sortTag}
-          getMessages={getSortedMessages}
-          getUnreadMessages={getUnreadMessages}
-        />
-        <MessageBox isChecked={checked} messages={Message} />
+        <MsgBoxContext.Provider value={messages}>
+          <Toolbar
+            onCheck={() => setChecked(!checked)}
+            isChecked={checked}
+            messages={messages}
+          ></Toolbar>
+          {checked && (
+            <PreMessageBox
+              messages={messages}
+              totalItems={totalItems}
+              tag={tag}
+              showAllConvo={showAllConvo}
+            />
+          )}
+          <PageHeader sortTag={sortTag} getUnreadMessages={getUnreadMessages} />
+          <MessageBox isChecked={checked} messages={messages} />
+        </MsgBoxContext.Provider>
       </PageContext.Provider>
     </Fragment>
   );

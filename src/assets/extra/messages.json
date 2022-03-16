@@ -6,7 +6,11 @@
     "description": "Add your resume today.",
     "time": "9:31 PM",
     "tags": ["primary"],
-    "status": "read"
+    "status": "read",
+    "message": {
+      "sender_email": "indeed@indeed.com",
+      "body": "This is the first test message"
+    }
   },
   {
     "id": "2",
@@ -15,7 +19,11 @@
     "description": "Netflix, Hi John, Thanks for contacting Netflix Customer Support. Here is a transcript from...",
     "time": "1:56 PM",
     "tags": ["primary"],
-    "status": "unread"
+    "status": "unread",
+    "message": {
+      "sender_email": "support@netflix.com",
+      "body": "This is the second test message"
+    }
   },
   {
     "id": "3",
@@ -24,7 +32,11 @@
     "description": "Add your resume today.",
     "time": "1:39 PM",
     "tags": ["promotions"],
-    "status": "unread"
+    "status": "unread",
+    "message": {
+      "sender_email": "support@netflix.com",
+      "body": "This is the third test message"
+    }
   },
   {
     "id": "4",
@@ -33,7 +45,11 @@
     "description": "Check out Quora latest features.",
     "time": "11:56 AM",
     "tags": ["primary"],
-    "status": "read"
+    "status": "read",
+    "message": {
+      "sender_email": "news@quora.com",
+      "body": "This is the fourth test message"
+    }
   },
   {
     "id": "5",
@@ -42,6 +58,10 @@
     "description": "Add your resume today.",
     "time": "9:21 AM",
     "tags": ["primary"],
-    "status": "unread"
+    "status": "unread",
+    "message": {
+      "sender_email": "support@linkedin.com",
+      "body": "This is the fifth test message"
+    }
   }
 ]

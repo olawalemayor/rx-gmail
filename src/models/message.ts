@@ -6,4 +6,8 @@ export default interface Message {
   id: string;
   status: string;
   tags: string[];
+  message: {
+    sender_email: string;
+    body: string;
+  };
 }

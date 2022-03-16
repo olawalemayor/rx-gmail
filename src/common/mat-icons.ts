@@ -8,6 +8,9 @@ import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
 import LabelIcon from "@mui/icons-material/Label";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PrintIcon from "@mui/icons-material/Print";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 export {
   MoreVertIcon,
@@ -20,4 +23,7 @@ export {
   AddTaskIcon,
   DriveFileMoveIcon,
   LabelIcon,
+  ArrowBackIcon,
+  PrintIcon,
+  OpenInNewIcon,
 };

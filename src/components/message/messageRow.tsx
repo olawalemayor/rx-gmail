@@ -1,8 +1,10 @@
 import React, { CSSProperties, useEffect, useState } from "react";
-import Checkbox from "../common/checkbox";
-import Starred from "../common/starred";
+import { useNavigate } from "react-router-dom";
+import Checkbox from "../../common/checkbox";
+import Starred from "../../common/starred";
 
 interface MessageRowProps {
+  id: string;
   sender: string;
   subject: string;
   description: string;
@@ -12,6 +14,7 @@ interface MessageRowProps {
 }
 
 export default function MessageRow({
+  id,
   sender,
   subject,
   description,
@@ -21,10 +24,45 @@ export default function MessageRow({
 }: MessageRowProps) {
   const [activeRow, setActiveRow] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const navigator = useNavigate();
 
   useEffect(() => {
     setActiveRow(isChecked);
   }, [isChecked]);
+
+  const introduction: CSSProperties = {
+    width: "250px",
+    minWidth: "250px",
+    placeItems: "center flex-start",
+  };
+
+  const details: CSSProperties = {
+    flex: "0 0 auto",
+    justifyContent: "space-between",
+    width: "100%",
+    maxWidth: "940px",
+  };
+
+  const topic: CSSProperties = {
+    fontWeight: "bolder",
+    display: "flex",
+    alignItems: "center",
+    flex: "1 0 auto",
+    width: "700px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    height: "1.5rem",
+  };
+
+  const summary: CSSProperties = {
+    fontWeight: "lighter",
+  };
+
+  const styleTime: CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "end",
+  };
 
   function styleMessageRow(): CSSProperties {
     const defaultStyle: CSSProperties = {
@@ -63,39 +101,9 @@ export default function MessageRow({
     setActiveRow(!activeRow);
   }
 
-  const introduction: CSSProperties = {
-    width: "250px",
-    minWidth: "250px",
-    placeItems: "center flex-start",
-  };
-
-  const details: CSSProperties = {
-    flex: "0 0 auto",
-    justifyContent: "space-between",
-    width: "100%",
-    maxWidth: "940px",
-  };
-
-  const topic: CSSProperties = {
-    fontWeight: "bolder",
-    display: "flex",
-    alignItems: "center",
-    flex: "1 0 auto",
-    width: "700px",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    height: "1.5rem",
-  };
-
-  const summary: CSSProperties = {
-    fontWeight: "lighter",
-  };
-
-  const styleTime: CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "end",
-  };
+  function getMsg() {
+    navigator(`${id}`);
+  }
 
   return (
     <div
@@ -113,14 +121,14 @@ export default function MessageRow({
           <Starred />
         </div>
 
-        <div className={unreadStyle()}>
+        <div className={unreadStyle()} onClick={() => getMsg()}>
           {sender}{" "}
           {status === "unread" && <span className="new-badge">New!!!</span>}
         </div>
       </div>
 
       <div className="flex" style={details}>
-        <div style={topic} className={unreadStyle()}>
+        <div style={topic} className={unreadStyle()} onClick={() => getMsg()}>
           <div>{subject} - </div>
 
           <div style={summary} className={unreadStyle()}>
